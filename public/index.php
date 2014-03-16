@@ -2,9 +2,7 @@
 
 error_reporting(E_ALL);
 
-$debug = new \Phalcon\Debug;
-
-$debug->listen();
+(new Phalcon\Debug)->listen();
 
 #try {
 
