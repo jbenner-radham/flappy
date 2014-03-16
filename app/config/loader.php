@@ -1,7 +1,5 @@
 <?php
 
-namespace RadHam;
-
 $loader = new \Phalcon\Loader;
 
 /**
@@ -13,11 +11,11 @@ $dirs = [
 ];
 
 $namespaces = [
-    'RadHam' => $config->application->controllersDir,
-    'RadHam\Models'      => $config->application->modelsDir
+    'Flappy\Controllers' => $config->application->controllersDir,
+    'Flappy\Models'      => $config->application->modelsDir
 ];
 
-//$loader->registerDirs($dirs);
+#$loader->registerDirs($dirs);
 $loader->registerNamespaces($namespaces);
 
 $loader->register();

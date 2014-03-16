@@ -1,7 +1,5 @@
 <?php
 
-namespace RadHam;
-
 use Phalcon\Mvc\Url as UrlResolver;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
@@ -30,7 +28,13 @@ $di = new \Phalcon\DI;
  *  @see http://forum.phalconphp.com/discussion/1302/namespace-routes-solved-
  */
 $di->set('router', function () {
-    return new \Phalcon\Mvc\Router;
+    #$router = new \Phalcon\Mvc\Router(false);
+    $router = new \Phalcon\Mvc\Router;
+    $router->removeExtraSlashes(true);
+    #var_dump(\Phalcon\Mvc\Router::URI_SOURCE_SERVER_REQUEST_URI);
+    //$router->setUriSource(Phalcon\Mvc\Router::URI_SOURCE_SERVER_REQUEST_URI);
+
+    return $router;
 });
 
 /**
@@ -85,7 +89,12 @@ $di->set('dispatcher', function () use (&$loader) {
 
 
     $dispatcher = new \Phalcon\Mvc\Dispatcher;
-    $dispatcher->setDefaultNamespace('RadHam');
+
+    /**
+     * You want to set your default namespace to your controllers namespace
+     * since they're handing the initial contact out of the MVC components.
+     */
+    $dispatcher->setDefaultNamespace('Flappy\Controllers\\');
     #$dispatcher->setEventsManager($events_manager);
 
     return $dispatcher;

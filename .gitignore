@@ -1,2 +1,6 @@
 cache/*.php
 config.php
+vendor
+.DS_Store
+*.sublime-workspace
+*.sublime-project

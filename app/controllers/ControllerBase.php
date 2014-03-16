@@ -1,6 +1,6 @@
 <?php
 
-namespace RadHam;
+namespace Flappy\Controllers;
 
 class ControllerBase extends \Phalcon\Mvc\Controller
 {
@@ -11,16 +11,25 @@ class ControllerBase extends \Phalcon\Mvc\Controller
 
     public function afterExecuteRoute($dispatcher)
     {
-        $dispatcher->getReturnedValue();
-
         $response = &$this->response;
-#var_dump($dispatcher);
-#exit;
+
         /**
          * @see http://tools.ietf.org/html/rfc4627.html
          */
         $response->setContentType('application/json; charset=utf-8')
-                 ->setJsonContent($response->getContent());
+                 ->setJsonContent($dispatcher->getReturnedValue());
+
+        /**
+         * Was...
+         *
+         * ```
+         * $response->setContentType('application/json; charset=utf-8')
+         *          ->setJsonContent($response->getContent());
+         * ```
+         *
+         * But that required the child controller to perform `$response->setContent()`
+         * instead of simply returning the value.
+         */
 
         return $response->send();
     }

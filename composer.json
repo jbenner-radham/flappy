@@ -1,0 +1,16 @@
+{
+    "name": "radham/flappy",
+    "description": "A hypermedia API with wings (and bad puns.)",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Benner",
+            "email": "james.benner@gmail.com"
+        }
+    ],
+    "minimum-stability": "alpha",
+    "require": {
+        "php": ">=5.4",
+        "ext-phalcon": "~1.2.6"
+    }
+}

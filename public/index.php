@@ -1,7 +1,5 @@
 <?php
 
-namespace RadHam;
-
 error_reporting(E_ALL);
 
 $debug = new \Phalcon\Debug;
